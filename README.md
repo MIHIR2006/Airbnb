@@ -14,7 +14,7 @@ Starter template for AI-assisted coding projects. Drop into any new project to g
 - **Context/memory.md** — Running project context/memory for the agent.
 
 ### Rules (behavioral guidelines for the AI agent)
-- **claude.md** — Core behavioral guidelines: Think Before Coding, Simplicity First, Surgical Changes, Goal-Driven Execution. Same content as `Rules/karpathy-guidelines.md`, sourced from [Karpathy's observations on LLM coding pitfalls](https://x.com/karpathy/status/2015883857489522876).
+- **claude.md** — Core behavioral guidelines: Think Before Coding, Simplicity First, Surgical Changes, Goal-Driven Execution. Sourced from [Karpathy's observations on LLM coding pitfalls](https://x.com/karpathy/status/2015883857489522876).
 - **Rules/Rules.md** — What to do, what to avoid, library/error-handling boundaries (fill in per project).
 - **Rules/EXAMPLES.md** — Concrete before/after code examples for each of the four principles above.
 - **skills/SKILL.md** — Packages the Karpathy guidelines as an invokable skill (`alwaysApply: true`).
@@ -32,5 +32,5 @@ See `Rules/EXAMPLES.md` for real code showing what LLMs commonly get wrong and h
 
 1. Copy this template into a new project.
 2. Fill in `PRD.md`, `Architecture.md`, `Design.md`, `Roadmap.md`, `Plases.md`, `AGENTS.md`, `Rules/Rules.md` with project-specific details.
-3. Keep `claude.md` / `Rules/karpathy-guidelines.md` as-is (or extend) — these govern agent behavior across the project.
+3. Keep `claude.md` / `skills/SKILL.md` as-is (or extend) — these govern agent behavior across the project.
 4. Point your AI coding agent at this repo root so it picks up the rules automatically.

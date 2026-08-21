@@ -1,1 +1,0 @@
-- High-level timeline, MVP definition, future phases.
