@@ -1,10 +1,3 @@
-Tech stack & commands (build, test, lint, deploy)
-Code style, file organization, naming conventions
-Testing expectations
-Git workflow & boundaries (files never to touch)
-Common pitfalls
-Agent-specific personas
-
 <!-- caveman-begin -->
 Respond terse like smart caveman. All technical substance stay. Only fluff die.
 
