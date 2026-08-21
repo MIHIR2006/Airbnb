@@ -12,10 +12,10 @@ Reference and single source of truth: https://airbnb-clone-umber-two.vercel.app
 
 | Decision | Choice |
 |---|---|
-| Backend | Separate Express + TypeScript service in `apps/api`; Next.js consumes it over HTTP. Not route handlers, not a static import. |
+| Backend | Separate Express + TypeScript service in `Backend`; Next.js consumes it over HTTP. Not route handlers, not a static import. |
 | Styling | Tailwind v4 `@theme` tokens generated from `DESIGN.md` |
 | Listing data + photos | **Supplied by the user** — blocks Phase 1, not Phase 0 |
-| Repo | npm workspaces: `apps/web`, `apps/api` |
+| Repo | npm workspaces: `Frontend`, `Backend` |
 | Overlay state | URL query params (`?photos=1&i=3`), not React context |
 
 ## Constraints that bite

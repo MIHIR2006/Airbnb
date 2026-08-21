@@ -1,0 +1,19 @@
+# dependencies (npm workspaces hoists most of this to the root)
+node_modules/
+
+# builds
+Backend/dist/
+Frontend/.next/
+Frontend/out/
+*.tsbuildinfo
+
+# env
+.env
+.env*.local
+
+# logs
+npm-debug.log*
+*.log
+
+# os
+.DS_Store

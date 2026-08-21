@@ -1,0 +1,19 @@
+{
+  "name": "airbnb-clone",
+  "private": true,
+  "workspaces": [
+    "Frontend",
+    "Backend"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,magenta \"npm run dev --workspace=Backend\" \"npm run dev --workspace=Frontend\"",
+    "dev:web": "npm run dev --workspace=Frontend",
+    "dev:api": "npm run dev --workspace=Backend",
+    "build": "npm run build --workspace=Backend && npm run build --workspace=Frontend",
+    "typecheck": "npm run typecheck --workspace=Frontend && npm run typecheck --workspace=Backend",
+    "lint": "npm run lint --workspace=Frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

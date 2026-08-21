@@ -23,8 +23,8 @@ https://airbnb-clone-umber-two.vercel.app — **behind Vercel bot protection**. 
 One line per difference, most visually obvious first:
 
 ```
-apps/web/src/components/listing/TitleRow.tsx:14: title font-size 24px, expected 22px (DESIGN.md typography.display-lg)
-apps/web/src/components/listing/HeroGrid.tsx:31: grid gap 12px, expected 8px (measured on reference)
+Frontend/src/components/listing/TitleRow.tsx:14: title font-size 24px, expected 22px (DESIGN.md typography.display-lg)
+Frontend/src/components/listing/HeroGrid.tsx:31: grid gap 12px, expected 8px (measured on reference)
 ```
 
 Format: `path:line: <what is wrong> <actual> vs <expected> (<source>)`.

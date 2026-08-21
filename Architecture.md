@@ -5,7 +5,7 @@
 | Layer | Choice | Why |
 |---|---|---|
 | Frontend | Next.js (App Router, TypeScript, RSC) | Required by the task; RSC keeps the listing page server-rendered and fast |
-| Backend | Express + TypeScript (`apps/api`) | Required "Node.js" backend, kept as a real separate service |
+| Backend | Express + TypeScript (`Backend`) | Required "Node.js" backend, kept as a real separate service |
 | Styling | Tailwind v4 `@theme` tokens | Token values come straight from `DESIGN.md`; utilities keep spacing/type consistent |
 | Motion | Framer Motion | Overlay enter/exit + shared-element transitions; respects `prefers-reduced-motion` |
 | Icons | Hand-rolled SVG | Airbnb's 32-glyph illustrated set has no icon-pack equivalent |
@@ -18,7 +18,7 @@
 ```
 Browser ──GET /──► Next.js RSC page
                       │
-                      └──fetch GET /api/listings/:id──► Express (apps/api)
+                      └──fetch GET /api/listings/:id──► Express (Backend)
                                                           └── listing.json
                       ◄── HTML (fully rendered listing) ──┘
 
@@ -38,30 +38,29 @@ Data fetching happens **once, server-side**. The client bundle carries interacti
 ## 3. Folder structure
 
 ```
-apps/
-  web/
-    src/
-      app/
-        layout.tsx           # fonts, <html>, global styles
-        page.tsx             # RSC — fetches listing, renders sections
-      components/
-        listing/             # Nav, HeroGrid, TitleRow, RatingCard, Amenities,
-                             # Calendar, Reviews, ReservationCard, Footer
-        gallery/             # PhotoTour, Lightbox, useOverlayRoute, useFocusTrap
-        ui/                  # Button, Modal, Badge, Icon, Avatar
-      styles/
-        tokens.css           # @theme block generated from DESIGN.md
-        globals.css          # reset + base type
-      lib/
-        api.ts               # fetch wrapper for the Express service
-        types.ts             # Listing, Photo, Review, Amenity, Host
-    public/photos/           # listing images (user-supplied)
-  api/
-    src/
-      server.ts              # express app + cors + error handler
-      routes/listings.ts     # GET /api/listings/:id
-      data/listing.json      # seed listing (user-supplied)
-      types.ts               # re-exported shape shared with web
+Frontend/
+  src/
+    app/
+      layout.tsx           # fonts, <html>, global styles
+      page.tsx             # RSC — fetches listing, renders sections
+    components/
+      listing/             # Nav, HeroGrid, TitleRow, RatingCard, Amenities,
+                           # Calendar, Reviews, ReservationCard, Footer
+      gallery/             # PhotoTour, Lightbox, useOverlayRoute, useFocusTrap
+      ui/                  # Button, Modal, Badge, Icon, Avatar
+    styles/
+      tokens.css           # @theme block generated from DESIGN.md
+      globals.css          # reset + base type
+    lib/
+      api.ts               # fetch wrapper for the Express service
+      types.ts             # Listing, Photo, Review, Amenity, Host
+  public/photos/           # listing images (user-supplied)
+Backend/
+  src/
+    server.ts              # express app + cors + error handler
+    routes/listings.ts     # GET /api/listings/:id
+    data/listing.json      # seed listing (user-supplied)
+    types.ts               # re-exported shape shared with frontend
 ```
 
 No `utils/`, no `hooks/` barrel, no `constants/` — add a directory only when a second file needs it.
@@ -69,7 +68,7 @@ No `utils/`, no `hooks/` barrel, no `constants/` — add a directory only when a
 ## 4. Token pipeline
 
 ```
-DESIGN.md  ──(manual, Phase 1)──►  apps/web/src/styles/tokens.css  ──►  Tailwind utilities
+DESIGN.md  ──(manual, Phase 1)──►  Frontend/src/styles/tokens.css  ──►  Tailwind utilities
 ```
 
 `tokens.css` mirrors the `colors`, `typography`, `rounded`, and `spacing` blocks of `DESIGN.md` as `@theme` custom properties. Components use `bg-primary`, `text-muted`, `rounded-md`, `p-lg` — never `#ff385c` or `14px`.

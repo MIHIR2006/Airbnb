@@ -38,8 +38,8 @@ You review accessibility and motion. You report; you do not edit.
 One line per finding, highest severity first:
 
 ```
-apps/web/src/components/gallery/Lightbox.tsx:42: HIGH: focus not restored on ESC — trigger element ref never captured. Store the activeElement before open, focus it in the cleanup.
-apps/web/src/components/listing/Nav.tsx:19: MED: icon-only save button has no accessible name. Add aria-label.
+Frontend/src/components/gallery/Lightbox.tsx:42: HIGH: focus not restored on ESC — trigger element ref never captured. Store the activeElement before open, focus it in the cleanup.
+Frontend/src/components/listing/Nav.tsx:19: MED: icon-only save button has no accessible name. Add aria-label.
 ```
 
 Format: `path:line: <SEVERITY>: <problem>. <fix>.`
