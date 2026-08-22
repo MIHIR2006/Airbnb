@@ -1,7 +1,245 @@
 {
   "id": "1",
-  "title": "Placeholder listing — replace in Phase 1",
-  "location": "TBD",
-  "rating": 0,
-  "reviewCount": 0
+  "title": "Romantic Jacuzzi 1BHK Candolim | Mirashya UG10",
+  "propertyType": "Entire serviced apartment",
+  "location": "Candolim, India",
+  "guests": 3,
+  "bedrooms": 1,
+  "beds": 1,
+  "bathrooms": 1,
+  "rating": 4.95,
+  "reviewCount": 19,
+  "guestFavorite": true,
+  "guestFavoriteText": "One of the most loved homes on Airbnb, according to guests",
+  "heroPhotos": [
+    { "src": "/photos/hero-1.svg", "alt": "Terrace lounge with jacuzzi" },
+    { "src": "/photos/hero-2.svg", "alt": "Outdoor seating area" },
+    { "src": "/photos/hero-3.svg", "alt": "Private jacuzzi" },
+    { "src": "/photos/hero-4.svg", "alt": "Bedroom" },
+    { "src": "/photos/hero-5.svg", "alt": "Building exterior" }
+  ],
+  "host": {
+    "name": "Mirashya Homes",
+    "yearsHosting": "2 years hosting",
+    "logo": { "src": "/avatars/host-logo.svg", "alt": "Mirashya Homes logo" },
+    "reviewCount": 1463,
+    "rating": 4.68,
+    "yearsHostingNum": 2,
+    "bio": ["Born in the 80s", "Where I went to school: NICMAR GOA"],
+    "responseRate": "100%",
+    "responseTime": "Responds within an hour",
+    "verified": true,
+    "coHosts": [
+      { "name": "Sharath", "avatarInitial": "S", "avatarColor": "#c9cdd6" },
+      { "name": "Aman Dev Pahwa", "avatarInitial": "A", "avatarColor": "#dccdb9" },
+      { "name": "Maria Karen Priyanka", "avatarInitial": "M", "avatarColor": "#d8cfc2" },
+      { "name": "Simran", "avatarInitial": "S", "avatarColor": "#cdd3c9" },
+      { "name": "Pallavi", "avatarInitial": "P", "avatarColor": "#d9c7bd" },
+      { "name": "Sanyukta", "avatarInitial": "S", "avatarColor": "#c7d0cb" },
+      { "name": "Shruti", "avatarInitial": "S", "avatarColor": "#f2c9d1" },
+      { "name": "Amisha", "avatarInitial": "A", "avatarColor": "#c9d3f2" }
+    ]
+  },
+  "highlights": [
+    {
+      "icon": "outdoor",
+      "title": "Outdoor entertainment",
+      "description": "The pool and alfresco dining are great for summer trips."
+    },
+    {
+      "icon": "fan",
+      "title": "Designed for staying cool",
+      "description": "Beat the heat with the A/C and ceiling fan."
+    },
+    {
+      "icon": "selfCheckin",
+      "title": "Self check-in",
+      "description": "You can check in with the building staff."
+    }
+  ],
+  "descriptionTranslatedNotice": "Some info has been automatically translated.",
+  "description": "🌴 Plan Your Relaxing Holiday at Amor De Goa by Mirashya Homes! ✨ Stay in this cozy 1BHK in the heart of Candolim, featuring a private jacuzzi 🛁 for the perfect unwind. Enjoy high-speed WiFi 💻, Smart TV 📺, pet-friendly comfort 🐾, and stylish interiors. Just minutes from Candolim Beach 🍹, popular cafés, restaurants, and nightlife 🌴, it's ideal for couples seeking romance, relaxation, and a touch of luxury in North Goa. ❤️ 🌴",
+  "sleepingArrangements": [
+    {
+      "room": "Bedroom",
+      "subtitle": "1 double bed",
+      "photo": { "src": "/photos/sleep-bedroom.svg", "alt": "Bedroom" }
+    },
+    {
+      "room": "Living room",
+      "subtitle": "1 sofa",
+      "photo": { "src": "/photos/sleep-livingroom.svg", "alt": "Living room" }
+    }
+  ],
+  "amenities": [
+    { "icon": "kitchen", "label": "Kitchen", "available": true },
+    { "icon": "wifi", "label": "Wifi", "available": true },
+    { "icon": "workspace", "label": "Dedicated workspace", "available": true },
+    { "icon": "parking", "label": "Free parking on premises", "available": true },
+    { "icon": "pool", "label": "Pool", "available": true },
+    { "icon": "hotTub", "label": "Hot tub", "available": true },
+    { "icon": "pets", "label": "Pets allowed", "available": true },
+    { "icon": "camera", "label": "Exterior security cameras on property", "available": true },
+    { "icon": "alarm", "label": "Carbon monoxide alarm", "available": false },
+    { "icon": "alarm", "label": "Smoke alarm", "available": false }
+  ],
+  "totalAmenities": 50,
+  "pricePerStay": 28499,
+  "currency": "₹",
+  "nights": 5,
+  "checkIn": "2026-10-18",
+  "checkOut": "2026-10-23",
+  "freeCancellationDate": "17 October",
+  "defaultGuests": 2,
+  "reviewBreakdown": {
+    "distribution": [
+      { "stars": 5, "percent": 95 },
+      { "stars": 4, "percent": 5 },
+      { "stars": 3, "percent": 0 },
+      { "stars": 2, "percent": 0 },
+      { "stars": 1, "percent": 0 }
+    ],
+    "categories": [
+      { "label": "Cleanliness", "icon": "cleanliness", "score": 5.0 },
+      { "label": "Accuracy", "icon": "accuracy", "score": 5.0 },
+      { "label": "Check-in", "icon": "checkin", "score": 5.0 },
+      { "label": "Communication", "icon": "communication", "score": 5.0 },
+      { "label": "Location", "icon": "location", "score": 4.8 },
+      { "label": "Value", "icon": "value", "score": 4.8 }
+    ]
+  },
+  "reviewTags": [
+    { "icon": "comfort", "label": "Comfort", "count": 6 },
+    { "icon": "accuracy", "label": "Accuracy", "count": 5 },
+    { "icon": "hotTub", "label": "Hot tub", "count": 5 },
+    { "icon": "condition", "label": "Condition", "count": 4 },
+    { "icon": "hospitality", "label": "Hospitality", "count": 8 },
+    { "icon": "cleanliness", "label": "Cleanliness", "count": 4 },
+    { "icon": "amenities", "label": "Amenities", "count": 2 }
+  ],
+  "reviews": [
+    {
+      "id": "amit",
+      "author": "Amit",
+      "authorTenure": "2 months on Airbnb",
+      "rating": 5,
+      "date": "1 week ago",
+      "text": "Very helpful and responsive team. Safe and peaceful stay. loved everything about the property.",
+      "avatarInitial": "A",
+      "avatarColor": "#dccdb9"
+    },
+    {
+      "id": "aheesh",
+      "author": "Aheesh",
+      "authorTenure": "3 years on Airbnb",
+      "rating": 5,
+      "date": "2 weeks ago",
+      "text": "We had a wonderful stay. The apartment was clean, comfortable, and exactly as shown in the photos. The host was very responsive and helpful throughout our stay. We would definitely recommend this place and would love to stay here again.",
+      "avatar": { "src": "/avatars/review-aheesh.svg", "alt": "Aheesh" }
+    },
+    {
+      "id": "samiksha",
+      "author": "Samiksha",
+      "authorTenure": "8 months on Airbnb",
+      "rating": 5,
+      "date": "May 2026",
+      "text": "the host nitish was really great help",
+      "avatar": { "src": "/avatars/review-samiksha.svg", "alt": "Samiksha" }
+    },
+    {
+      "id": "vedant",
+      "author": "Vedant",
+      "authorTenure": "4 years on Airbnb",
+      "rating": 5,
+      "date": "May 2026",
+      "text": "We had an amazing stay at this property in Goa! The entire home was spotless and exceptionally well-maintained, making us feel comfortable from the moment we arrived. The cleanliness standards were truly impressive, with every corner of the house looking fresh and pristine.",
+      "avatarInitial": "V",
+      "avatarColor": "#c9d3f2"
+    },
+    {
+      "id": "vaibhav",
+      "author": "Vaibhav S",
+      "authorTenure": "3 years on Airbnb",
+      "rating": 5,
+      "date": "May 2026",
+      "text": "Great great experience living out there , can't expect more , will always look for it in the future and will recommend my friends too.",
+      "avatar": { "src": "/avatars/review-vaibhav.svg", "alt": "Vaibhav S" }
+    },
+    {
+      "id": "mohd",
+      "author": "Mohd",
+      "authorTenure": "5 years on Airbnb",
+      "rating": 5,
+      "date": "May 2026",
+      "text": "Great place. Exactly as described in the listing.",
+      "avatar": { "src": "/avatars/review-mohd.svg", "alt": "Mohd" }
+    }
+  ],
+  "address": "Candolim, Goa, India",
+  "mapNote": "Exact location will be provided after booking.",
+  "neighbourhoodHighlights": "Located in the heart of Candolim, Amor de Goa offers a peaceful stay with easy access to beaches, cafés, and popular attractions.",
+  "thingsToKnow": [
+    {
+      "icon": "cancellation",
+      "title": "Cancellation policy",
+      "lines": [
+        "Free cancellation before 17 October. Cancel before check-in on 18 October for a partial refund.",
+        "Review this host's full policy for details."
+      ],
+      "linkLabel": "Learn more"
+    },
+    {
+      "icon": "houseRules",
+      "title": "House rules",
+      "lines": ["Check-in after 2:00 pm", "Checkout before 11:00 am", "3 guests maximum"],
+      "linkLabel": "Learn more"
+    },
+    {
+      "icon": "safety",
+      "title": "Safety & property",
+      "lines": [
+        "Carbon monoxide alarm not reported",
+        "Smoke alarm not reported",
+        "Exterior security cameras on property"
+      ],
+      "linkLabel": "Learn more"
+    }
+  ],
+  "nearbyListings": [
+    {
+      "id": "nearby-1",
+      "title": "Beautiful Studio with a view to die for",
+      "price": 23600,
+      "rating": 4.91,
+      "photo": { "src": "/photos/nearby-1.svg", "alt": "Beautiful Studio with a view to die for" }
+    },
+    {
+      "id": "nearby-2",
+      "title": "NAQAB - 1bhk with private pool",
+      "price": 42218,
+      "rating": 4.95,
+      "photo": { "src": "/photos/nearby-2.svg", "alt": "NAQAB - 1bhk with private pool" }
+    },
+    {
+      "id": "nearby-3",
+      "title": "Greentique Luxury Flat with plunge pool, Calangute",
+      "price": 44506,
+      "rating": 4.94,
+      "photo": { "src": "/photos/nearby-3.svg", "alt": "Greentique Luxury Flat with plunge pool, Calangute" }
+    },
+    {
+      "id": "nearby-4",
+      "title": "The Tropical Studio | 5 mins to Beach",
+      "price": 22824,
+      "rating": 4.96,
+      "photo": { "src": "/photos/nearby-4.svg", "alt": "The Tropical Studio | 5 mins to Beach" }
+    },
+    {
+      "id": "nearby-5",
+      "title": "Luxury Casa Bella 1BHK with plunge pool, Calangute",
+      "price": 39942,
+      "rating": 4.95,
+      "photo": { "src": "/photos/nearby-5.svg", "alt": "Luxury Casa Bella 1BHK with plunge pool, Calangute" }
+    }
+  ]
 }
