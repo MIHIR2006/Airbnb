@@ -1,15 +1,20 @@
 import Link from "next/link";
+import Image from "next/image";
 import { HouseIcon, SearchIcon, GlobeIcon, MenuIcon } from "@/components/icons";
 
 export function TopNav() {
   return (
     <header className="border-b border-hairline">
       <div className="mx-auto flex h-20 max-w-280 items-center justify-between px-lg">
-        <Link href="/" className="flex items-center gap-xs text-primary">
-          <svg viewBox="0 0 32 32" className="h-8 w-8" fill="currentColor" aria-hidden="true">
-            <path d="M16 3c6.5 8 10 14.5 10 18.5A10 10 0 016 21.5C6 17.5 9.5 11 16 3z" />
-          </svg>
-          <span className="text-display-sm text-primary">airbnb</span>
+        <Link href="/" className="flex items-center text-primary shrink-0">
+          <Image
+            src="/logo/Airbnb_Logo_0.svg"
+            alt="Airbnb"
+            width={102}
+            height={32}
+            className="h-8 w-auto"
+            priority
+          />
         </Link>
 
         <div className="hidden items-center rounded-full border border-hairline shadow-elevated md:flex">

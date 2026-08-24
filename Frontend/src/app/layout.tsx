@@ -10,6 +10,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Romantic Jacuzzi 1BHK Candolim | Mirashya UG10 - Airbnb",
   description: "Entire serviced apartment in Candolim, India · 3 guests · 1 bedroom · 1 bed · 1 bathroom",
+  icons: {
+    icon: "/logo/Airbnb_Symbol_1.png",
+    shortcut: "/logo/Airbnb_Symbol_1.png",
+    apple: "/logo/Airbnb_Symbol_1.png",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
