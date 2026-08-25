@@ -12,11 +12,14 @@ Reference and single source of truth: https://airbnb-clone-umber-two.vercel.app
 
 | Decision | Choice |
 |---|---|
-| Backend | Separate Express + TypeScript service in `Backend`; Next.js consumes it over HTTP. Not route handlers, not a static import. |
+| Backend | Next.js Route Handler (`src/app/api/listings/[id]/route.ts`), same app as the page. Real HTTP boundary, one deployable. |
 | Styling | Tailwind v4 `@theme` tokens generated from `DESIGN.md` |
-| Listing data + photos | **Supplied by the user** — blocks Phase 1, not Phase 0 |
-| Repo | npm workspaces: `Frontend`, `Backend` |
+| Listing data + photos | Real listing content extracted from user-supplied screenshots (a live "Romantic Jacuzzi 1BHK Candolim" listing); photos are locally generated placeholder SVGs pending real image files |
+| Repo | Single flat Next.js app at the repo root — no monorepo, no workspaces |
 | Overlay state | URL query params (`?photos=1&i=3`), not React context |
+| Modals/overlays | Built on Radix Dialog (`@radix-ui/react-dialog`) |
+
+**2026-08-26 — dropped the separate Express service, flattened to one app.** Submission requires a live link and time is short; a second service means a second host and `API_URL` wiring across two deploys. Moved the one route into a Next.js Route Handler and flattened `Frontend/` up to the repo root so Vercel's zero-config import just works (no "Root Directory" setting). Still real Node.js server code with a real HTTP boundary — only the deploy topology changed, not the frontend's data-fetching pattern. See `Architecture.md` §1 "Why one app, not a separate Express service."
 
 ## Constraints that bite
 

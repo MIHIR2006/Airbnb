@@ -5,26 +5,30 @@
 | Layer | Choice | Why |
 |---|---|---|
 | Frontend | Next.js (App Router, TypeScript, RSC) | Required by the task; RSC keeps the listing page server-rendered and fast |
-| Backend | Express + TypeScript (`Backend`) | Required "Node.js" backend, kept as a real separate service |
+| Backend | Next.js Route Handler (`src/app/api/listings/[id]/route.ts`) | Real Node.js server code satisfying the "Node.js backend" requirement, without a second deployable — see "Why one app" below |
 | Styling | Tailwind v4 `@theme` tokens | Token values come straight from `DESIGN.md`; utilities keep spacing/type consistent |
-| Motion | Framer Motion | Overlay enter/exit + shared-element transitions; respects `prefers-reduced-motion` |
+| Overlays | Radix Dialog (`@radix-ui/react-dialog`) | Photo Tour and Lightbox reuse it for focus trap, ESC handling, and `aria-modal` — matches "shadcn or similar as base UI" |
 | Icons | Hand-rolled SVG | Airbnb's 32-glyph illustrated set has no icon-pack equivalent |
-| Testing | Vitest (unit) + Playwright (e2e, a11y, visual) | Playwright is also the only way to inspect the bot-protected reference |
-| Repo | npm workspaces | Two apps, one lockfile, one `npm run dev` |
-| Deploy | Vercel (web) + Render/Fly (api) | Matches the reference's hosting; API gets a long-lived container |
+| Testing | Playwright | Used for local visual verification (screenshots against the reference) and e2e keyboard flows; also the only way to inspect the bot-protected reference |
+| Repo | Single Next.js app at the repo root | One `package.json`, one `npm run dev`, zero-config Vercel import (no monorepo Root Directory setting needed) |
+| Deploy | Vercel | Single project, single click — Route Handler and page both ship in the same deployment |
+
+### Why one app, not a separate Express service
+
+The original plan ran a separate Express service (`Backend/`) so the "Node.js backend" requirement was a literally distinct process. That's real architecture, but it costs a second host, a second deploy, and cross-service `API_URL` wiring — all avoidable cost once a live submission link on a tight deadline became the actual constraint. A Next.js Route Handler is still real server-side Node.js code with a real HTTP boundary (`curl /api/listings/1` still works), it just now ships inside the same Vercel deployment as the page. Nothing about the frontend changed — `getListing()` still does an HTTP `fetch`, it now just targets a same-origin route instead of a second host.
 
 ## 2. App flow
 
 ```
-Browser ──GET /──► Next.js RSC page
+Browser ──GET /──► Next.js RSC page (src/app/page.tsx)
                       │
-                      └──fetch GET /api/listings/:id──► Express (Backend)
-                                                          └── listing.json
+                      └──fetch GET /api/listings/:id──► Route Handler (src/app/api/listings/[id]/route.ts)
+                                                          └── src/data/listing.json
                       ◄── HTML (fully rendered listing) ──┘
 
 Click "Show all photos"  ──► router.push('?photos=1')      ──► PhotoTour overlay (client)
 Click a photo in tour    ──► router.push('?photos=1&i=3')  ──► Lightbox overlay (client)
-ESC / Back               ──► router.back()                 ──► previous layer restored
+ESC                      ──► closes the topmost overlay      ──► one layer at a time, URL-driven
 ```
 
 **Overlay state lives in the URL, not in React state.** Consequences that matter:
@@ -38,29 +42,29 @@ Data fetching happens **once, server-side**. The client bundle carries interacti
 ## 3. Folder structure
 
 ```
-Frontend/
-  src/
-    app/
-      layout.tsx           # fonts, <html>, global styles
-      page.tsx             # RSC — fetches listing, renders sections
-    components/
-      listing/             # Nav, HeroGrid, TitleRow, RatingCard, Amenities,
-                           # Calendar, Reviews, ReservationCard, Footer
-      gallery/             # PhotoTour, Lightbox, useOverlayRoute, useFocusTrap
-      ui/                  # Button, Modal, Badge, Icon, Avatar
-    styles/
-      tokens.css           # @theme block generated from DESIGN.md
-      globals.css          # reset + base type
-    lib/
-      api.ts               # fetch wrapper for the Express service
-      types.ts             # Listing, Photo, Review, Amenity, Host
-  public/photos/           # listing images (user-supplied)
-Backend/
-  src/
-    server.ts              # express app + cors + error handler
-    routes/listings.ts     # GET /api/listings/:id
-    data/listing.json      # seed listing (user-supplied)
-    types.ts               # re-exported shape shared with frontend
+src/
+  app/
+    layout.tsx                     # fonts, <html>, global styles
+    page.tsx                       # RSC — fetches listing, renders sections
+    globals.css                    # Tailwind import + tokens + base styles
+    api/listings/[id]/route.ts     # GET /api/listings/:id
+  components/
+    listing/                       # Nav, HeroGrid, ListingHeader, Amenities,
+                                   # BookingCalendar, Reviews, BookingRail, Footer
+    gallery/                       # PhotoTourOverlay, Lightbox
+    ui/                            # Button, Modal
+    icons/                         # hand-rolled SVG icon set
+  lib/
+    api.ts                         # fetch wrapper — calls the Route Handler
+    listing-data.ts                # reads src/data/listing.json
+    types.ts                       # Listing, Photo, Review, Amenity, Host
+    useGalleryUrl.ts                # URL-driven Photo Tour / Lightbox state
+  styles/
+    tokens.css                     # @theme block generated from DESIGN.md
+  data/
+    listing.json                   # the one listing's real content
+public/
+  photos/, avatars/                # listing images
 ```
 
 No `utils/`, no `hooks/` barrel, no `constants/` — add a directory only when a second file needs it.
@@ -68,7 +72,7 @@ No `utils/`, no `hooks/` barrel, no `constants/` — add a directory only when a
 ## 4. Token pipeline
 
 ```
-DESIGN.md  ──(manual, Phase 1)──►  Frontend/src/styles/tokens.css  ──►  Tailwind utilities
+DESIGN.md  ──(manual, Phase 1)──►  src/styles/tokens.css  ──►  Tailwind utilities
 ```
 
 `tokens.css` mirrors the `colors`, `typography`, `rounded`, and `spacing` blocks of `DESIGN.md` as `@theme` custom properties. Components use `bg-primary`, `text-muted`, `rounded-md`, `p-lg` — never `#ff385c` or `14px`.

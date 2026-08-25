@@ -22,20 +22,20 @@ Extends `claude.md` (Think Before Coding / Simplicity First / Surgical Changes /
 
 ## Library boundaries
 
-**Approved:** Next.js · React · Express · TypeScript · Tailwind v4 · Framer Motion · Vitest · Playwright · axe-core.
+**Approved:** Next.js · React · TypeScript · Tailwind v4 · Radix (`@radix-ui/react-dialog`) · Playwright.
 
 **Ask first:** everything else. Specifically —
 
 - **Icons:** hand-roll SVG to match Airbnb's illustrated 32-glyph set. No `lucide`, no `react-icons` — the shapes are wrong.
-- **Modals:** hand-rolled focus trap unless a11y work proves it insufficient, then propose Radix.
+- **Modals/overlays:** built on Radix Dialog (`components/ui/Modal.tsx`, `PhotoTourOverlay`, `Lightbox`) — gives focus trap, ESC handling, and `aria-modal` for free. Don't hand-roll a second modal primitive.
 - **Date picker:** hand-rolled to match `date-picker-day` / `date-picker-day-selected` in `DESIGN.md`. Library pickers cannot hit the lozenge range styling without heavy overrides.
-- **State:** URL + local state. No Redux, Zustand, or Jotai.
+- **State:** URL (overlay state) + local component state. No Redux, Zustand, or Jotai.
 
 ## Error handling boundary
 
 - API `404` → not-found UI. API `500`/network failure → a simple error state. That is the full set.
 - Do **not** write handling for impossible states: missing token values, empty photo arrays, malformed seed data. The data is a fixture the repo controls — if it is wrong, fix the fixture.
-- Express gets one error middleware. No per-route try/catch scaffolding.
+- The Route Handler (`src/app/api/listings/[id]/route.ts`) returns 404 for an unknown id and nothing else. No per-route try/catch scaffolding.
 
 ## Git
 

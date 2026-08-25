@@ -100,7 +100,7 @@ No auth. No real booking or payments. No search results page, map interactivity 
 4. Overlay open/close/navigate motion matches the reference's duration and easing.
 5. `prefers-reduced-motion` honored across every animation.
 6. axe reports zero violations; Lighthouse accessibility ≥ 95 on all three views.
-7. Listing data served over HTTP by the Node/Express API — not imported as a static module.
+7. Listing data served over HTTP by a real Node.js server endpoint (a Next.js Route Handler) — not imported as a static module by the page.
 8. Production-scale architecture diagram submitted (see `Architecture.md`).
 9. Sub-agent configs committed under `.claude/agents/`.
 

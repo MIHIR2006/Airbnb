@@ -9,16 +9,15 @@ Reference: https://airbnb-clone-umber-two.vercel.app — bot-protected, so all "
 ## Phase 0 — Scaffold & agent config
 
 **Deliverable**
-- npm workspaces root: `Frontend` (Next.js, TS strict, App Router), `Backend` (Express, TS).
-- `npm run dev` runs both concurrently; web on 3000, api on 4000.
-- ESLint + Prettier shared config; Vitest + Playwright installed.
+- Single Next.js app at the repo root (TS strict, App Router).
+- ESLint installed; Playwright installed for local visual verification.
 - `.claude/agents/{pixel-auditor,a11y-motion-reviewer,token-guard}.md` committed.
-- `Backend` serves a stub `GET /api/listings/:id`.
+- `src/app/api/listings/[id]/route.ts` serves a stub `GET /api/listings/:id`.
 
 **Verify**
 ```bash
-npm run dev                                  # both apps boot, no errors
-curl -s localhost:4000/api/listings/1 | jq   # returns JSON
+npm run dev                                  # app boots, no errors
+curl -s localhost:3000/api/listings/1 | jq   # returns JSON
 npm run typecheck && npm run lint            # clean
 ```
 
@@ -29,10 +28,10 @@ npm run typecheck && npm run lint            # clean
 **Blocked on:** user-supplied listing data + photos.
 
 **Deliverable**
-- `Frontend/src/styles/tokens.css` — `@theme` block mirroring `DESIGN.md` colors, typography, `rounded`, `spacing`.
-- `Frontend/src/lib/types.ts` — `Listing`, `Photo`, `Review`, `Amenity`, `Host`; re-exported by the API.
-- `Backend/src/data/listing.json` — real listing content conforming to `Listing`.
-- Photos in `Frontend/public/photos/`, or `next.config` remote-pattern allowlist if hotlinked.
+- `src/styles/tokens.css` — `@theme` block mirroring `DESIGN.md` colors, typography, `rounded`, `spacing`.
+- `src/lib/types.ts` — `Listing`, `Photo`, `Review`, `Amenity`, `Host`.
+- `src/data/listing.json` — real listing content conforming to `Listing`, read by the Route Handler.
+- Photos in `public/photos/`, or `next.config` remote-pattern allowlist if hotlinked.
 - Airbnb Cereal VF (or documented substitute per `DESIGN.md` §Font Substitutes) loaded in `layout.tsx`.
 
 **Verify**

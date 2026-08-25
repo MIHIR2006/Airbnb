@@ -9,11 +9,11 @@ You enforce one rule: **every design value in a component comes from a token.**
 
 ## Allowed to contain literals
 
-- `Frontend/src/styles/tokens.css` — the `@theme` block. This is where literals live.
-- `Frontend/src/styles/globals.css` — reset only.
+- `src/styles/tokens.css` — the `@theme` block. This is where literals live.
+- `src/styles/globals.css` — reset only.
 - SVG icon path data (`d=`, `viewBox`) — geometry, not design tokens.
 
-Everything under `Frontend/src/components/` and `Frontend/src/app/` must be clean.
+Everything under `src/components/` and `src/app/` must be clean.
 
 ## Method
 
@@ -24,9 +24,9 @@ Everything under `Frontend/src/components/` and `Frontend/src/app/` must be clea
 ## Output
 
 ```
-Frontend/src/components/listing/RatingCard.tsx:22: #222222 → colors.ink → use text-ink
-Frontend/src/components/listing/HeroGrid.tsx:8: rounded-[14px] → rounded.md → use rounded-md
-Frontend/src/components/ui/Badge.tsx:11: #f0f0f0 → NO TOKEN — measure from reference, add to tokens.css, flag for DESIGN.md
+src/components/listing/RatingCard.tsx:22: #222222 → colors.ink → use text-ink
+src/components/listing/HeroGrid.tsx:8: rounded-[14px] → rounded.md → use rounded-md
+src/components/ui/Badge.tsx:11: #f0f0f0 → NO TOKEN — measure from reference, add to tokens.css, flag for DESIGN.md
 ```
 
 Format: `path:line: <literal> → <token path> → <utility to use>`.

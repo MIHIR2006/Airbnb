@@ -1,16 +1,15 @@
 # AGENTS.md
 
-Airbnb listing-page clone. Next.js frontend + Express API, npm workspaces.
+Airbnb listing-page clone. Single Next.js app (page + API Route Handler), deployed as one Vercel project.
 Read `PRD.md` for what to build, `phases.md` for order, `Rules/Rules.md` for boundaries, `DESIGN.md` for every design value.
 
 ## Commands
 
 | Task | Command |
 |---|---|
-| Dev (both apps) | `npm run dev` — web :3000, api :4000 |
+| Dev | `npm run dev` — :3000 |
 | Typecheck | `npm run typecheck` |
 | Lint | `npm run lint` |
-| Unit tests | `npm run test` |
 | E2E / a11y / visual | `npx playwright test` |
 | Build | `npm run build` |
 
@@ -25,10 +24,9 @@ Read `PRD.md` for what to build, `phases.md` for order, `Rules/Rules.md` for bou
 
 ## Testing expectations
 
-- Overlay behavior (Photo Tour, Lightbox) is covered by Playwright keyboard-only specs — focus trap, focus restore, ESC layering, Back behavior.
+- Overlay behavior (Photo Tour, Lightbox) is covered by Playwright keyboard-only specs — focus trap, focus restore, ESC layering.
 - Visual fidelity is verified by screenshot comparison at 375 / 744 / 1128 / 1440.
 - a11y gate: axe zero violations, Lighthouse ≥ 95, on all three views.
-- Unit tests only where logic exists (date range, price breakdown). Do not unit-test markup.
 - **Never claim a phase is done without pasting the output of its verify command.**
 
 ## Git workflow & boundaries
@@ -52,3 +50,13 @@ Configs in `.claude/agents/`:
 - **`pixel-auditor`** — read-only visual fidelity diff against the reference. Reports differences with measured vs expected values. Never fixes.
 - **`a11y-motion-reviewer`** — focus order, trap/restore, ARIA, keyboard paths, reduced-motion. Severity-tagged findings.
 - **`token-guard`** — finds raw hex/px/font literals outside `tokens.css` and maps each to its `DESIGN.md` token.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
