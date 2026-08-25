@@ -1,5 +1,6 @@
 import { Suspense } from "react";
-import { getListing } from "@/lib/api";
+import { notFound } from "next/navigation";
+import { getListingById } from "@/lib/listing-data";
 import { PhotoTourOverlay } from "@/components/gallery/PhotoTourOverlay";
 import { Lightbox } from "@/components/gallery/Lightbox";
 import { TopNav } from "@/components/listing/TopNav";
@@ -23,8 +24,9 @@ import { NearbyListings } from "@/components/listing/NearbyListings";
 import { BookingRail } from "@/components/listing/BookingRail";
 
 
-export default async function Home() {
-  const listing = await getListing("1");
+export default function Home() {
+  const listing = getListingById("1");
+  if (!listing) notFound();
 
   return (
     <>
@@ -33,7 +35,9 @@ export default async function Home() {
       <main className="mx-auto w-full max-w-[1120px] px-6 pt-base">
         <TitleRow listing={listing} />
         <div id="section-photos" className="pt-xs">
-          <HeroGrid photos={listing.heroPhotos} />
+          <Suspense fallback={null}>
+            <HeroGrid photos={listing.heroPhotos} />
+          </Suspense>
         </div>
         <ListingHeader listing={listing} />
       </main>
