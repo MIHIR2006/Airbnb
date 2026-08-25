@@ -48,7 +48,7 @@ function ReviewCard({ review }: { review: Review }) {
 
 export function ReviewsGrid({ reviews, total }: { reviews: Review[]; total: number }) {
   return (
-    <div className="flex flex-col gap-lg border-b border-hairline pb-lg">
+    <div className="flex flex-col gap-lg">
       <div className="grid grid-cols-1 gap-x-xl gap-y-lg sm:grid-cols-2">
         {reviews.map((r) => (
           <ReviewCard key={r.id} review={r} />

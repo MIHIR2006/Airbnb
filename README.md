@@ -42,6 +42,16 @@ src/
   data/              # Listing data
 ```
 
+## Architecture
+
+**Current implementation** — how this repo runs today.
+
+![Current Implementation](./CURRENT%20IMPLEMENTATION.png)
+
+**Production-scale target** — same Next.js core, scaled with a real database, cache, CDN, and search index.
+
+![Production-Scale Target](./PRODUCTION-SCALE%20TARGET.png)
+
 ## Links
 
 - GitHub: [Mihir2006](https://github.com/MIHIR2006)
