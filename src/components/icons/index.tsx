@@ -250,8 +250,16 @@ export function ChevronRightIcon(props: IconProps) {
 export function CleanlinessIcon(props: IconProps) {
   return (
     <Base {...props}>
-      <path d="M9 2v4l-2 2v12h10V8l-2-2V2z" />
-      <path d="M7 12h10" />
+      {/* Spray nozzle & trigger */}
+      <path d="M8 8h7v2.5H8z" />
+      <path d="M11 8V5.5a1.5 1.5 0 00-1.5-1.5H8" />
+      <path d="M12 5.5l1.5-1.5" />
+      {/* Bottle neck & body */}
+      <path d="M9.5 10.5h4L15 13v7a2 2 0 01-2 2h-3a2 2 0 01-2-2v-7l1.5-2.5z" />
+      {/* Spray mist */}
+      <circle cx="17.5" cy="4" r="0.5" fill="currentColor" stroke="none" />
+      <circle cx="19" cy="5.5" r="0.5" fill="currentColor" stroke="none" />
+      <circle cx="17.5" cy="7" r="0.5" fill="currentColor" stroke="none" />
     </Base>
   );
 }
@@ -268,8 +276,10 @@ export function AccuracyIcon(props: IconProps) {
 export function CheckinIcon(props: IconProps) {
   return (
     <Base {...props}>
-      <circle cx="10" cy="10" r="6" />
-      <path d="M14.5 14.5L21 21" />
+      {/* Key head */}
+      <circle cx="8" cy="15" r="4" />
+      {/* Key shaft & teeth */}
+      <path d="M11 12l9-9M17 6l2 2M14 9l2 2" />
     </Base>
   );
 }
@@ -277,7 +287,7 @@ export function CheckinIcon(props: IconProps) {
 export function CommunicationIcon(props: IconProps) {
   return (
     <Base {...props}>
-      <path d="M4 5h16v11H8l-4 4z" />
+      <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 018.5-8.5h.5a8.5 8.5 0 018.5 8.5z" />
     </Base>
   );
 }
@@ -285,8 +295,9 @@ export function CommunicationIcon(props: IconProps) {
 export function LocationIcon(props: IconProps) {
   return (
     <Base {...props}>
-      <path d="M12 21s7-6.6 7-12a7 7 0 10-14 0c0 5.4 7 12 7 12z" />
-      <circle cx="12" cy="9" r="2.3" />
+      {/* Unfolded map panels */}
+      <path d="M3 6l6-3 6 3 6-3v12l-6 3-6-3-6 3V6z" />
+      <path d="M9 3v12M15 6v12" />
     </Base>
   );
 }
@@ -294,8 +305,9 @@ export function LocationIcon(props: IconProps) {
 export function ValueIcon(props: IconProps) {
   return (
     <Base {...props}>
-      <path d="M12 4l8 8-8 8-8-8z" />
-      <circle cx="9" cy="9" r="1" fill="currentColor" stroke="none" />
+      {/* Price tag */}
+      <path d="M8.5 4.5l8.5 8.5-6 6-8.5-8.5v-6z" />
+      <circle cx="6.5" cy="6.5" r="1.2" fill="currentColor" stroke="none" />
     </Base>
   );
 }

@@ -85,7 +85,6 @@ export interface NearbyListing {
   price: number;
   rating: number;
   photo: Photo;
-  photos?: Photo[];
 }
 
 export interface Listing {

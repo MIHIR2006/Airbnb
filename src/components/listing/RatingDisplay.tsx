@@ -12,9 +12,6 @@ export function RatingDisplay({ rating }: { rating: number }) {
       <p className="mx-auto mt-xs max-w-112 text-body-sm text-muted">
         This home is a guest favourite based on ratings, reviews and reliability
       </p>
-      <button type="button" className="mt-sm text-button-md text-ink underline">
-        How reviews work
-      </button>
     </div>
   );
 }
