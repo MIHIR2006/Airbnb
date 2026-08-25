@@ -58,12 +58,12 @@ function MonthGrid({
   const cells = buildMonth(year, month);
   return (
     <div>
-      <p className="mb-base text-center text-title-sm text-ink">
+      <p className="mb-6 text-center text-[16px] font-semibold text-ink">
         {MONTH_NAMES[month]} {year}
       </p>
-      <div className="grid grid-cols-7 gap-y-xs text-center">
+      <div className="grid grid-cols-7 gap-y-1 text-center">
         {WEEKDAYS.map((d, i) => (
-          <span key={i} className="text-caption-sm text-muted">
+          <span key={i} className="text-[12px] font-semibold text-ink h-9 flex items-center justify-center">
             {d}
           </span>
         ))}
@@ -76,18 +76,30 @@ function MonthGrid({
           const isPast = date < new Date(2026, 9, 1);
           const isUnavailable = UNAVAILABLE_DATES.has(dateKey(year, month, day)) && !isStart && !isEnd;
           const isDisabled = isPast || isUnavailable;
+
           return (
-            <div key={i} className={`relative flex items-center justify-center ${inRange ? "bg-surface-soft" : ""} ${isStart ? "rounded-l-full bg-surface-soft" : ""} ${isEnd ? "rounded-r-full bg-surface-soft" : ""}`}>
+            <div key={i} className="relative flex h-11 w-full items-center justify-center">
+              {/* Highlight background strip connecting range */}
+              {inRange && (
+                <div className="absolute inset-y-1 left-0 right-0 bg-[#F7F7F7] z-0" />
+              )}
+              {isStart && (
+                <div className="absolute inset-y-1 left-1/2 right-0 bg-[#F7F7F7] z-0" />
+              )}
+              {isEnd && (
+                <div className="absolute inset-y-1 left-0 right-1/2 bg-[#F7F7F7] z-0" />
+              )}
+
               <button
                 type="button"
                 disabled={isDisabled}
-                className={`text-body-sm flex h-10 w-10 items-center justify-center rounded-full ${
+                className={`text-[14px] font-semibold flex h-10 w-10 items-center justify-center rounded-full z-10 transition-all relative ${
                   isStart || isEnd
-                    ? "bg-ink text-on-dark"
+                    ? "bg-ink text-on-dark font-bold"
                     : isUnavailable
-                      ? "text-muted-soft line-through"
+                      ? "text-muted-soft line-through cursor-not-allowed"
                       : isPast
-                        ? "text-muted-soft"
+                        ? "text-muted-soft cursor-not-allowed"
                         : "text-ink hover:border hover:border-ink"
                 }`}
               >
@@ -112,8 +124,14 @@ export function BookingCalendar({
   nights: number;
   location: string;
 }) {
-  const start = new Date(checkIn);
-  const end = new Date(checkOut);
+  // Parse inputs as UTC to extract correct calendar day components,
+  // then normalize them to local midnight Date objects to match MonthGrid local dates.
+  const startRaw = new Date(checkIn);
+  const start = new Date(startRaw.getUTCFullYear(), startRaw.getUTCMonth(), startRaw.getUTCDate());
+
+  const endRaw = new Date(checkOut);
+  const end = new Date(endRaw.getUTCFullYear(), endRaw.getUTCMonth(), endRaw.getUTCDate());
+
   const [cursor, setCursor] = useState({ year: start.getFullYear(), month: start.getMonth() });
 
   const nextMonth = { year: cursor.month === 11 ? cursor.year + 1 : cursor.year, month: (cursor.month + 1) % 12 };
@@ -121,48 +139,48 @@ export function BookingCalendar({
   const formatted = `${start.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })} - ${end.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}`;
 
   return (
-    <div className="flex flex-col gap-base border-b border-hairline pb-lg">
-      <div>
-        <h2 className="text-display-md text-ink">
+    <div className="flex flex-col gap-6 border-b border-hairline pb-lg">
+      <div className="flex flex-col gap-1">
+        <h2 className="text-display-xl text-ink">
           {nights} nights in {location}
         </h2>
-        <p className="text-body-sm text-muted">{formatted}</p>
+        <p className="text-[14px] text-muted">{formatted}</p>
       </div>
 
-      <div className="flex items-center justify-between">
+      <div className="relative mt-2">
+        {/* Absolute chevrons matching month header vertical alignment */}
         <button
           type="button"
           aria-label="Previous month"
           onClick={() => setCursor((c) => ({ year: c.month === 0 ? c.year - 1 : c.year, month: (c.month + 11) % 12 }))}
-          className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-surface-strong"
+          className="absolute left-2 top-[2px] flex h-8 w-8 items-center justify-center rounded-full hover:bg-surface-soft z-20"
         >
-          <ChevronLeftIcon className="h-4 w-4" />
+          <ChevronLeftIcon className="h-4 w-4 text-ink" />
         </button>
-        <span />
         <button
           type="button"
           aria-label="Next month"
           onClick={() => setCursor((c) => ({ year: c.month === 11 ? c.year + 1 : c.year, month: (c.month + 1) % 12 }))}
-          className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-surface-strong"
+          className="absolute right-2 top-[2px] flex h-8 w-8 items-center justify-center rounded-full hover:bg-surface-soft z-20"
         >
-          <ChevronRightIcon className="h-4 w-4" />
+          <ChevronRightIcon className="h-4 w-4 text-ink" />
         </button>
+
+        <div className="grid grid-cols-2 gap-16">
+          <MonthGrid year={cursor.year} month={cursor.month} selectedStart={start} selectedEnd={end} />
+          <MonthGrid year={nextMonth.year} month={nextMonth.month} selectedStart={start} selectedEnd={end} />
+        </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-xl">
-        <MonthGrid year={cursor.year} month={cursor.month} selectedStart={start} selectedEnd={end} />
-        <MonthGrid year={nextMonth.year} month={nextMonth.month} selectedStart={start} selectedEnd={end} />
-      </div>
-
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mt-4">
         <button
           type="button"
           aria-label="Switch to manual date entry"
-          className="flex h-9 w-9 items-center justify-center rounded-sm border border-hairline hover:shadow-elevated"
+          className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#B0B0B0] hover:bg-surface-soft transition-colors"
         >
           <KeyboardIcon className="h-4 w-4 text-ink" />
         </button>
-        <button type="button" className="text-button-md text-ink underline">
+        <button type="button" className="text-button-md text-ink underline font-semibold">
           Clear dates
         </button>
       </div>

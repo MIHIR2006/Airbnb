@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Listing } from "@/lib/types";
 import { StarIcon } from "@/components/icons";
 
@@ -16,10 +17,14 @@ export function ListingHeader({ listing }: { listing: Listing }) {
 
       {listing.guestFavorite && (
         <div className="flex items-center gap-lg rounded-md border border-hairline px-lg py-base">
-          <div className="flex flex-col items-center gap-xxs text-center">
-            <StarIcon className="h-4 w-4 text-ink" />
-            <span className="text-caption text-ink">Guest favourite</span>
-          </div>
+          <Image
+            src="/logo/Guest Favouite.png"
+            alt="Guest favourite"
+            width={120}
+            height={44}
+            className="h-11 w-auto shrink-0 object-contain"
+            priority
+          />
           <span className="h-10 w-px shrink-0 bg-hairline" />
           <p className="text-body-sm text-ink">{listing.guestFavoriteText}</p>
           <span className="h-10 w-px shrink-0 bg-hairline" />
