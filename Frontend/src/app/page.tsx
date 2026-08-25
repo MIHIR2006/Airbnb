@@ -1,4 +1,7 @@
+import { Suspense } from "react";
 import { getListing } from "@/lib/api";
+import { PhotoTourOverlay } from "@/components/gallery/PhotoTourOverlay";
+import { Lightbox } from "@/components/gallery/Lightbox";
 import { TopNav } from "@/components/listing/TopNav";
 import { TitleRow } from "@/components/listing/TitleRow";
 import { HeroGrid } from "@/components/listing/HeroGrid";
@@ -81,6 +84,11 @@ export default async function Home() {
       </main>
 
       <Footer />
+
+      <Suspense fallback={null}>
+        <PhotoTourOverlay rooms={listing.photoTour} />
+        <Lightbox photos={listing.photoTour.flatMap((r) => r.photos)} />
+      </Suspense>
     </>
   );
 }

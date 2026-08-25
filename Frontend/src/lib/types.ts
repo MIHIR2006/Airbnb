@@ -73,12 +73,19 @@ export interface ThingsToKnowSection {
   linkLabel: string;
 }
 
+export interface PhotoRoom {
+  room: string;
+  thumbnail: Photo;
+  photos: Photo[];
+}
+
 export interface NearbyListing {
   id: string;
   title: string;
   price: number;
   rating: number;
   photo: Photo;
+  photos?: Photo[];
 }
 
 export interface Listing {
@@ -95,6 +102,7 @@ export interface Listing {
   guestFavorite: boolean;
   guestFavoriteText: string;
   heroPhotos: Photo[];
+  photoTour: PhotoRoom[];
   host: Host;
   highlights: Highlight[];
   descriptionTranslatedNotice: string;

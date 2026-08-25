@@ -14,7 +14,7 @@ export function BookingRail({ listing }: { listing: Listing }) {
   return (
     <div id="bookingSticky" className="sticky top-lg flex flex-col gap-base">
       <div className="flex items-center gap-base rounded-md border border-hairline p-base">
-        <TagIcon className="h-6 w-6 shrink-0 text-ink" />
+        <TagIcon className="h-6 w-6 shrink-0 text-[#38A169]" />
         <p className="flex-1 text-body-sm text-ink">
           Get 10% off your next stay.
           <br />
@@ -28,9 +28,9 @@ export function BookingRail({ listing }: { listing: Listing }) {
       </div>
 
       <div className="flex flex-col gap-base rounded-md border border-hairline p-lg shadow-elevated">
-        <p className="text-title-md text-ink">
-          {listing.currency}
-          {listing.pricePerStay.toLocaleString("en-IN")} for {listing.nights} nights
+        <p className="text-[22px] font-semibold text-ink">
+          <span className="underline">{listing.currency}{listing.pricePerStay.toLocaleString("en-IN")}</span>
+          <span className="text-[15px] font-normal text-ink ml-1">for {listing.nights} nights</span>
         </p>
 
         <div className="overflow-hidden rounded-sm border border-hairline">
@@ -69,7 +69,7 @@ export function BookingRail({ listing }: { listing: Listing }) {
           Free cancellation before <strong>{listing.freeCancellationDate}</strong>
         </p>
 
-        <Button id="reserveBtn" variant="primary" className="w-full">
+        <Button id="reserveBtn" variant="primary" className="w-full !rounded-lg h-12 text-[16px] font-semibold">
           Reserve
         </Button>
 

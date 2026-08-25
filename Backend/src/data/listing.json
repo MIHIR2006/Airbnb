@@ -18,6 +18,63 @@
     { "src": "/photos/hero-4.svg", "alt": "Bedroom" },
     { "src": "/photos/hero-5.svg", "alt": "Building exterior" }
   ],
+  "photoTour": [
+    {
+      "room": "Living room",
+      "thumbnail": { "src": "/photos/hero-1.svg", "alt": "Living room" },
+      "photos": [
+        { "src": "/photos/hero-1.svg", "alt": "Living room with balcony view" },
+        { "src": "/photos/tour-living-2.svg", "alt": "Living room seating area" },
+        { "src": "/photos/tour-living-3.svg", "alt": "Living room entryway" }
+      ]
+    },
+    {
+      "room": "Full kitchen",
+      "thumbnail": { "src": "/photos/tour-thumb-kitchen.svg", "alt": "Full kitchen" },
+      "photos": [{ "src": "/photos/tour-kitchen.svg", "alt": "Full kitchen" }]
+    },
+    {
+      "room": "Bedroom 1",
+      "thumbnail": { "src": "/photos/tour-thumb-bedroom1.svg", "alt": "Bedroom 1" },
+      "photos": [
+        { "src": "/photos/tour-bedroom1-a.svg", "alt": "Bedroom 1" },
+        { "src": "/photos/tour-bedroom1-b.svg", "alt": "Bedroom 1 with mirror" }
+      ]
+    },
+    {
+      "room": "Bedroom 2",
+      "thumbnail": { "src": "/photos/tour-thumb-bedroom2.svg", "alt": "Bedroom 2" },
+      "photos": [
+        { "src": "/photos/tour-bedroom2-a.svg", "alt": "Bedroom 2" },
+        { "src": "/photos/tour-bedroom2-b.svg", "alt": "Bedroom 2 with balcony" }
+      ]
+    },
+    {
+      "room": "Full bathroom 1",
+      "thumbnail": { "src": "/photos/tour-thumb-bathroom1.svg", "alt": "Full bathroom 1" },
+      "photos": [{ "src": "/photos/tour-bathroom1.svg", "alt": "Full bathroom 1" }]
+    },
+    {
+      "room": "Full bathroom 2",
+      "thumbnail": { "src": "/photos/tour-thumb-bathroom2.svg", "alt": "Full bathroom 2" },
+      "photos": [{ "src": "/photos/tour-bathroom2.svg", "alt": "Full bathroom 2" }]
+    },
+    {
+      "room": "Workspace",
+      "thumbnail": { "src": "/photos/tour-thumb-workspace.svg", "alt": "Workspace" },
+      "photos": [{ "src": "/photos/tour-workspace.svg", "alt": "Workspace" }]
+    },
+    {
+      "room": "Exterior",
+      "thumbnail": { "src": "/photos/tour-thumb-exterior.svg", "alt": "Exterior" },
+      "photos": [{ "src": "/photos/tour-exterior.svg", "alt": "Exterior" }]
+    },
+    {
+      "room": "Additional photos",
+      "thumbnail": { "src": "/photos/tour-thumb-additional.svg", "alt": "Additional photos" },
+      "photos": [{ "src": "/photos/tour-additional.svg", "alt": "Additional photos" }]
+    }
+  ],
   "host": {
     "name": "Mirashya Homes",
     "yearsHosting": "2 years hosting",
@@ -211,35 +268,60 @@
       "title": "Beautiful Studio with a view to die for",
       "price": 23600,
       "rating": 4.91,
-      "photo": { "src": "/photos/nearby-1.svg", "alt": "Beautiful Studio with a view to die for" }
+      "photo": { "src": "/photos/nearby-1.svg", "alt": "Beautiful Studio with a view to die for" },
+      "photos": [
+        { "src": "/photos/nearby-1.svg", "alt": "Beautiful Studio with a view to die for - Photo 1" },
+        { "src": "/photos/nearby-2.svg", "alt": "Beautiful Studio with a view to die for - Photo 2" },
+        { "src": "/photos/nearby-3.svg", "alt": "Beautiful Studio with a view to die for - Photo 3" }
+      ]
     },
     {
       "id": "nearby-2",
       "title": "NAQAB - 1bhk with private pool",
       "price": 42218,
       "rating": 4.95,
-      "photo": { "src": "/photos/nearby-2.svg", "alt": "NAQAB - 1bhk with private pool" }
+      "photo": { "src": "/photos/nearby-2.svg", "alt": "NAQAB - 1bhk with private pool" },
+      "photos": [
+        { "src": "/photos/nearby-2.svg", "alt": "NAQAB - 1bhk with private pool - Photo 1" },
+        { "src": "/photos/nearby-3.svg", "alt": "NAQAB - 1bhk with private pool - Photo 2" },
+        { "src": "/photos/nearby-4.svg", "alt": "NAQAB - 1bhk with private pool - Photo 3" }
+      ]
     },
     {
       "id": "nearby-3",
       "title": "Greentique Luxury Flat with plunge pool, Calangute",
       "price": 44506,
       "rating": 4.94,
-      "photo": { "src": "/photos/nearby-3.svg", "alt": "Greentique Luxury Flat with plunge pool, Calangute" }
+      "photo": { "src": "/photos/nearby-3.svg", "alt": "Greentique Luxury Flat with plunge pool, Calangute" },
+      "photos": [
+        { "src": "/photos/nearby-3.svg", "alt": "Greentique Luxury Flat with plunge pool, Calangute - Photo 1" },
+        { "src": "/photos/nearby-4.svg", "alt": "Greentique Luxury Flat with plunge pool, Calangute - Photo 2" },
+        { "src": "/photos/nearby-5.svg", "alt": "Greentique Luxury Flat with plunge pool, Calangute - Photo 3" }
+      ]
     },
     {
       "id": "nearby-4",
       "title": "The Tropical Studio | 5 mins to Beach",
       "price": 22824,
       "rating": 4.96,
-      "photo": { "src": "/photos/nearby-4.svg", "alt": "The Tropical Studio | 5 mins to Beach" }
+      "photo": { "src": "/photos/nearby-4.svg", "alt": "The Tropical Studio | 5 mins to Beach" },
+      "photos": [
+        { "src": "/photos/nearby-4.svg", "alt": "The Tropical Studio | 5 mins to Beach - Photo 1" },
+        { "src": "/photos/nearby-5.svg", "alt": "The Tropical Studio | 5 mins to Beach - Photo 2" },
+        { "src": "/photos/nearby-1.svg", "alt": "The Tropical Studio | 5 mins to Beach - Photo 3" }
+      ]
     },
     {
       "id": "nearby-5",
       "title": "Luxury Casa Bella 1BHK with plunge pool, Calangute",
       "price": 39942,
       "rating": 4.95,
-      "photo": { "src": "/photos/nearby-5.svg", "alt": "Luxury Casa Bella 1BHK with plunge pool, Calangute" }
+      "photo": { "src": "/photos/nearby-5.svg", "alt": "Luxury Casa Bella 1BHK with plunge pool, Calangute" },
+      "photos": [
+        { "src": "/photos/nearby-5.svg", "alt": "Luxury Casa Bella 1BHK with plunge pool, Calangute - Photo 1" },
+        { "src": "/photos/nearby-1.svg", "alt": "Luxury Casa Bella 1BHK with plunge pool, Calangute - Photo 2" },
+        { "src": "/photos/nearby-2.svg", "alt": "Luxury Casa Bella 1BHK with plunge pool, Calangute - Photo 3" }
+      ]
     }
   ]
 }
