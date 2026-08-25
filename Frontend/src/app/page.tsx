@@ -1,5 +1,6 @@
 import { getListing } from "@/lib/api";
 import { TopNav } from "@/components/listing/TopNav";
+import { TitleRow } from "@/components/listing/TitleRow";
 import { HeroGrid } from "@/components/listing/HeroGrid";
 import { ListingHeader } from "@/components/listing/ListingHeader";
 import { StickySubNav } from "@/components/listing/StickySubNav";
@@ -26,8 +27,9 @@ export default async function Home() {
     <>
       <TopNav />
 
-      <main className="mx-auto w-full max-w-280 px-lg">
-        <div id="section-photos" className="pt-lg">
+      <main className="mx-auto w-full max-w-[1120px] px-6 pt-base">
+        <TitleRow listing={listing} />
+        <div id="section-photos" className="pt-xs">
           <HeroGrid photos={listing.heroPhotos} />
         </div>
         <ListingHeader listing={listing} />
@@ -35,11 +37,9 @@ export default async function Home() {
 
       <StickySubNav listing={listing} />
 
-      <main className="mx-auto w-full max-w-280 px-lg py-xl">
-        {/* Sticky rail tracks only this grid — it unsticks once the calendar section ends,
-            matching the reference's behavior (rail does not follow through reviews/location/host). */}
+      <main className="mx-auto w-full max-w-[1120px] px-6 py-xl">
         <div className="grid grid-cols-1 gap-xl lg:grid-cols-[1fr_360px]">
-          <div className="flex min-w-0 flex-col gap-xl">
+          <div id="contentLeft" className="flex min-w-0 flex-col gap-xl">
             <Highlights highlights={listing.highlights} />
             <Description text={listing.description} translatedNotice={listing.descriptionTranslatedNotice} />
             <SleepingArrangements rooms={listing.sleepingArrangements} />

@@ -1,22 +1,9 @@
 import type { Listing } from "@/lib/types";
-import { ShareIcon, HeartIcon, StarIcon } from "@/components/icons";
+import { StarIcon } from "@/components/icons";
 
 export function ListingHeader({ listing }: { listing: Listing }) {
   return (
     <div className="mt-lg flex flex-col gap-base">
-      <div className="flex items-start justify-between gap-base">
-        <h1 className="text-display-lg text-ink">{listing.title}</h1>
-        <div className="flex shrink-0 items-center gap-lg">
-          <button type="button" className="flex items-center gap-xs text-button-sm text-ink underline">
-            <ShareIcon className="h-4 w-4" />
-            Share
-          </button>
-          <button type="button" className="flex items-center gap-xs text-button-sm text-ink underline">
-            <HeartIcon className="h-4 w-4" />
-            Save
-          </button>
-        </div>
-      </div>
 
       <div>
         <p className="text-title-sm text-ink">

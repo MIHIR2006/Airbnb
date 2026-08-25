@@ -12,7 +12,7 @@ export function BookingRail({ listing }: { listing: Listing }) {
   const checkOutLabel = new Date(listing.checkOut).toLocaleDateString("en-US");
 
   return (
-    <div className="sticky top-lg flex flex-col gap-base">
+    <div id="bookingSticky" className="sticky top-lg flex flex-col gap-base">
       <div className="flex items-center gap-base rounded-md border border-hairline p-base">
         <TagIcon className="h-6 w-6 shrink-0 text-ink" />
         <p className="flex-1 text-body-sm text-ink">
@@ -69,7 +69,7 @@ export function BookingRail({ listing }: { listing: Listing }) {
           Free cancellation before <strong>{listing.freeCancellationDate}</strong>
         </p>
 
-        <Button variant="primary" className="w-full">
+        <Button id="reserveBtn" variant="primary" className="w-full">
           Reserve
         </Button>
 

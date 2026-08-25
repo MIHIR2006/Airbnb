@@ -14,6 +14,20 @@ const TABS = [
 
 export function StickySubNav({ listing }: { listing: Listing }) {
   const [active, setActive] = useState(TABS[0].id);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 600) {
+        setVisible(true);
+      } else {
+        setVisible(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -32,15 +46,21 @@ export function StickySubNav({ listing }: { listing: Listing }) {
   }, []);
 
   return (
-    <div className="sticky top-0 z-30 border-b border-hairline bg-canvas">
-      <div className="mx-auto flex max-w-280 items-center justify-between px-lg py-base">
-        <nav className="flex gap-lg" aria-label="Listing sections">
+    <div
+      className={`fixed top-0 left-0 right-0 z-30 border-b border-hairline bg-canvas transition-all duration-300 ${
+        visible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
+      }`}
+    >
+      <div className="mx-auto flex h-16 w-full max-w-[1120px] items-center justify-between px-6">
+        <nav className="flex h-full gap-6" aria-label="Listing sections">
           {TABS.map((tab) => (
             <a
               key={tab.id}
               href={`#${tab.id}`}
-              className={`text-button-md pb-xs ${
-                active === tab.id ? "border-b-2 border-ink text-ink" : "text-muted"
+              className={`flex h-full items-center text-[14px] font-semibold transition-all ${
+                active === tab.id
+                  ? "border-b-[3px] border-ink text-ink pt-[3px]"
+                  : "text-muted hover:text-ink"
               }`}
             >
               {tab.label}
@@ -48,17 +68,21 @@ export function StickySubNav({ listing }: { listing: Listing }) {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-lg sm:flex">
-          <p className="text-body-sm text-ink">
-            <span className="underline">
+        <div className="hidden items-center gap-4 sm:flex">
+          <div className="flex flex-col text-right">
+            <p className="text-[14px] font-semibold text-ink">
               {listing.currency}
-              {listing.pricePerStay.toLocaleString("en-IN")}
-            </span>{" "}
-            for {listing.nights} nights
-            <span className="mx-xs">·</span>
-            <StarIcon className="mb-0.5 inline h-3 w-3" /> {listing.rating} · {listing.reviewCount} reviews
-          </p>
-          <Button variant="primary" className="h-10 px-lg">
+              {listing.pricePerStay.toLocaleString("en-IN")}{" "}
+              <span className="font-normal text-muted text-[13px]">for {listing.nights} nights</span>
+            </p>
+            <p className="flex items-center justify-end gap-1 text-[12px] font-semibold text-ink">
+              <StarIcon className="h-3 w-3" />
+              <span>{listing.rating}</span>
+              <span className="text-muted font-normal">·</span>
+              <span className="underline font-normal text-muted">{listing.reviewCount} reviews</span>
+            </p>
+          </div>
+          <Button variant="primary" className="!h-10 px-6 !rounded-full text-[14px] font-semibold">
             Reserve
           </Button>
         </div>
