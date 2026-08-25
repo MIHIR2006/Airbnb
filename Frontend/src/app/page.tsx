@@ -21,7 +21,7 @@ import { HostProfile } from "@/components/listing/HostProfile";
 import { ThingsToKnow } from "@/components/listing/ThingsToKnow";
 import { NearbyListings } from "@/components/listing/NearbyListings";
 import { BookingRail } from "@/components/listing/BookingRail";
-import { Footer } from "@/components/listing/Footer";
+
 
 export default async function Home() {
   const listing = await getListing("1");
@@ -82,8 +82,6 @@ export default async function Home() {
 
         <NearbyListings listings={listing.nearbyListings} />
       </main>
-
-      <Footer />
 
       <Suspense fallback={null}>
         <PhotoTourOverlay rooms={listing.photoTour} />

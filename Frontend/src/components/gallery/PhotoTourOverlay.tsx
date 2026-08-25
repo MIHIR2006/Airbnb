@@ -12,12 +12,12 @@ function slug(room: string) {
 export function PhotoTourOverlay({ rooms }: { rooms: PhotoRoom[] }) {
   const { tourOpen, closeTour, openLightbox } = useGalleryUrl();
 
-  let runningIndex = 0;
-  const roomsWithIndex = rooms.map((room) => {
-    const startIndex = runningIndex;
-    runningIndex += room.photos.length;
-    return { ...room, startIndex };
-  });
+  const roomsWithIndex = [];
+  let currentIdx = 0;
+  for (const room of rooms) {
+    roomsWithIndex.push({ ...room, startIndex: currentIdx });
+    currentIdx += room.photos.length;
+  }
 
   return (
     <Dialog.Root open={tourOpen} onOpenChange={(open) => !open && closeTour()}>

@@ -25,19 +25,19 @@ function NearbyCard({ listing }: { listing: NearbyListing }) {
   return (
     <a
       href="#"
-      className="w-48 shrink-0 group relative block"
+      className="w-[220px] shrink-0 group relative block"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Image Container with Slider */}
-      <div className="relative aspect-square w-full overflow-hidden rounded-md bg-[#F7F7F7] mb-sm">
+      <div className="relative w-full h-[220px] overflow-hidden rounded-[16px] bg-[#F7F7F7] mb-sm">
         {/* Images */}
         <div className="relative h-full w-full">
           <Image
             src={photos[activeIndex].src}
             alt={photos[activeIndex].alt}
             fill
-            sizes="192px"
+            sizes="220px"
             className="object-cover transition-opacity duration-300"
             priority={activeIndex === 0}
           />
@@ -64,24 +64,10 @@ function NearbyCard({ listing }: { listing: NearbyListing }) {
             </button>
           </>
         )}
-
-        {/* Dots Indicators at the bottom */}
-        {photos.length > 1 && (
-          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1 z-10">
-            {photos.map((_, idx) => (
-              <span
-                key={idx}
-                className={`h-1.5 w-1.5 rounded-full transition-all ${
-                  idx === activeIndex ? "bg-white scale-110" : "bg-white/50"
-                }`}
-              />
-            ))}
-          </div>
-        )}
       </div>
 
-      <p className="line-clamp-1 text-body-sm text-ink">{listing.title}</p>
-      <p className="flex items-center gap-xs text-body-sm text-ink mt-0.5">
+      <p className="line-clamp-2 text-body-sm text-ink leading-snug">{listing.title}</p>
+      <p className="flex items-center gap-xs text-body-sm text-ink mt-1">
         <span className="font-semibold">₹{listing.price.toLocaleString("en-IN")}</span>
         <span className="text-[#717171] font-normal">night</span>
         <span className="ml-auto flex items-center gap-[2px]">
@@ -104,7 +90,7 @@ export function NearbyListings({ listings }: { listings: NearbyListing[] }) {
   }
 
   return (
-    <div className="pb-lg">
+    <div className="pt-xl pb-lg">
       <div className="mb-lg flex items-center justify-between">
         <h2 className="text-display-md text-ink">More stays nearby</h2>
         <div className="flex items-center gap-base">
@@ -129,7 +115,7 @@ export function NearbyListings({ listings }: { listings: NearbyListing[] }) {
           </button>
         </div>
       </div>
-      <div ref={scrollRef} className="flex gap-base overflow-x-auto scroll-smooth">
+      <div ref={scrollRef} className="flex items-start gap-base overflow-x-auto scroll-smooth no-scrollbar">
         {listings.map((listing) => (
           <NearbyCard key={listing.id} listing={listing} />
         ))}
